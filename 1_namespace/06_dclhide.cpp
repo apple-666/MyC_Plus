@@ -13,8 +13,8 @@ namespace ns2 {
 }
 
 int main( void ) {
-    using namespace ns1; // 名字空间指令,ns1中的内容在当前作用域仅仅为可见,但是ns1中的所有内容都可见
-    using ns2::g_value; // 名字空间声明,ns2中的g_value相当于定义在当前作用域,但是只有g_value相当于定义
+    using namespace ns1; // 名字空间指令,ns1中的内容在当前作用域仅仅为可见,但是ns1中的所有内容都可见 -> 进入可见表中
+    using ns2::g_value; // 名字空间声明,ns2中的g_value相当于定义在当前作用域,但是只有g_value相当于定义 -> 进入定义表中
 
     g_value = 8888;  
     cout << "ns1::g_value=" << ns1::g_value << ", ns2::g_value=" << ns2::g_value << endl;

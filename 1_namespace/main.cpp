@@ -27,7 +27,7 @@ void global_a1()
 
 
 // 定义表（main区域的变量）  可见表（namespace的，和main外部（全局）的变量）
-
+// 定义表/ 可见表都不能重复申明
 int main()
 {
     cin.tie(0);
