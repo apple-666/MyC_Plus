@@ -1,16 +1,11 @@
 // 拷贝构造
 /**
- * 拷贝构造: 1,func名和类名一样 2,只有一个参数
+ * 拷贝构造: 1,func名和类名一样 2,只有一个本类型的参数
 */
 #include <iostream> 
 using namespace std;
 class Human {
 public:
-//  如果类没有提供任何构造函数,编译器将提供一个无参的构造函数
-/*  Human( ) {
-       【int m_age;】定义m_age,初值为随机数
-       【string m_name;】定义m_name,利用m_name.string()
-    }*/
     Human( int age=0, const char* name="无名" ) {
         //【int m_age;】定义m_age,初值为随机数
         //【string m_name;】定义m_name,利用m_name.string()
@@ -35,9 +30,7 @@ private:
     int m_age; // 基本类型的成员变量 
     string m_name; // 类类型的成员变量
 };
-// 以上代码模拟的是类的设计者(例如: 类库、别人设计的类、自己设计的类)
-// ---------------------------------------
-// 以下代码模拟的是用户
+
 int main( void ) {
     Human h; // 定义h,利用h.Human() --> (无名,0)
     h.getinfo( );

@@ -44,9 +44,10 @@ int main(void)
     h.getinfo();
 
     cout << "after: a: " << a << endl;
-    h.m_age = 222;
-    strcpy(h.m_name, "张飞");
-     strcpy( h.m_name, "小二" );
-    cout << "姓名: " << h.m_name << ", 年龄: " << h.m_age << endl;
+    // 使用了private所以，这里不能调用
+    // h.m_age = 222;
+    // strcpy(h.m_name, "张飞");
+    //  strcpy( h.m_name, "小二" );
+    // cout << "姓名: " << h.m_name << ", 年龄: " << h.m_age << endl;
     return 0;
 }
