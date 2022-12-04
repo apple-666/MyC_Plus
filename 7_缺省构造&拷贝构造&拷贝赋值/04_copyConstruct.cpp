@@ -21,6 +21,7 @@ public:
     Human(const Human& that){ // const 作用:既可以接收常数也可以非常数 &作用：避免复制操作,提高性能
       m_age = that.m_age;
       m_name = that.m_name;
+      cout<<"~~~拷贝构造函数"<<endl;
     }
 
     void getinfo( /* Human* this */ ) { 
@@ -38,8 +39,10 @@ int main( void ) {
     Human h2(22,"张飞"); // 定义h2,利用h2.Human(22,"张飞") --> (张飞,22)
     h2.getinfo( );
 
-    Human copH(h2);
+    Human copH(h2);     // 调用拷贝构造
+    Human copH1 = h2;   // 调用拷贝构造
     copH.getinfo( );
+
     return 0;
 }
 

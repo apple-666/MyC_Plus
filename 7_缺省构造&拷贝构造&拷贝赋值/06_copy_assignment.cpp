@@ -25,9 +25,11 @@ public:
         this->m_name = that.m_name; // string类拷贝赋值函数
         return *this;
     }*/
+    // 使用& 减少一次拷贝构造使用
     Human& operator = (const Human& that ) {
       this->m_name = that.m_name;
       this->m_age = that.m_age;
+      cout<<"~~~拷贝赋值函数"<<endl;
       return *this;
     }
 private:
