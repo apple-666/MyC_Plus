@@ -21,13 +21,13 @@ public:
   list() : m_head(NULL), m_tail(NULL) {}
   // 不能这样写,node是list内的类,list构造时还未编译node
   // erroe: list(node* head=NULL,node* tail=NULL): m_head(head), m_tail(tail){}
-  list(list const& that) : m_head(NULL), m_tail(NULL)
+  list(list const &that) : m_head(NULL), m_tail(NULL)
   {
     for (node *i = that.m_head; i != NULL; i = i->m_next)
     {
       push_back(i->m_data);
     }
-    cout<<"list的拷贝构造"<<endl;
+    cout << "list的拷贝构造" << endl;
   }
   ~list()
   {
@@ -37,7 +37,7 @@ public:
 
   bool empty()
   {
-    return m_head==NULL&&m_tail==NULL;
+    return m_head == NULL && m_tail == NULL;
   }
 
   void push_front(const T &value)
@@ -148,7 +148,10 @@ private:
   };
   node *m_head;
   node *m_tail;
+  
+  // 如何让ostream实现泛型 list<T>
   friend ostream &operator<<(ostream &os, list<int> &l);
+  friend ostream &operator<<(ostream &os, list<double> &l);
 };
 
 ostream &operator<<(ostream &os, list<int> &l)
@@ -160,13 +163,24 @@ ostream &operator<<(ostream &os, list<int> &l)
   }
   return os;
 }
+ostream &operator<<(ostream &os, list<double> &l)
+{
+  // pnode!=NULL 代表本身是node有数据
+  for (list<double>::node *pnode = l.m_head; pnode != NULL; pnode = pnode->m_next)
+  {
+    os << pnode->m_data << " ";
+  }
+  return os;
+}
 
 int main()
 {
   list<int> l;
   cout << "是否为空：" << l.empty() << endl;
-  for(int i=5;i>0;i--) l.push_front(i);
-  for(int i=0;i<5;i++) l.push_back(i+5);
+  for (int i = 5; i > 0; i--)
+    l.push_front(i);
+  for (int i = 0; i < 5; i++)
+    l.push_back(i + 5);
   cout << "l.size():" << l.size() << endl;
   cout << "容器所有数据:" << l << endl;
 
@@ -178,9 +192,29 @@ int main()
   l.clear();
   cout << "是否为空：" << l.empty() << endl;
 
-  for(int i=1;i<=20;i++) l.push_back(i);
+  for (int i = 1; i <= 20; i++)
+    l.push_back(i);
   cout << "容器所有数据:" << l << endl;
   list<int> l2(l);
-  cout<<l2<<endl;
+  cout << l2 << endl;
+
+  cout<<"-----------double类-----------"<<endl;
+  list<double> l3;
+  cout << "是否为空：" << l3.empty() << endl;
+  for (int i = 5; i > 0; i--)
+    l3.push_front(i * 1.1);
+  for (int i = 0; i < 5; i++)
+    l3.push_back(i * 2.2);
+  cout << "l.size():" << l3.size() << endl;
+  cout << "容器所有数据:" << l3 << endl;
+
+  l3.pop_front();
+  l3.pop_back();
+  cout << "l3.front():" << l3.front() << endl;
+  cout << "l3.back():" << l3.back() << endl;
+
+  l3.clear();
+  cout << "是否为空：" <<l3.empty() << endl;
+
   return 0;
 }
