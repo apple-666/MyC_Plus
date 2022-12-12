@@ -71,6 +71,7 @@
     "typeindex": "cpp",
     "typeinfo": "cpp",
     "valarray": "cpp",
-    "01_lambda": "cpp"
+    "01_lambda": "cpp",
+    "stack": "cpp"
   }
 }
